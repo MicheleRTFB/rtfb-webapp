@@ -3,7 +3,10 @@ import DashboardLayout from '../components/DashboardLayout';
 import WeeklySchedule from '../components/WeeklySchedule';
 import WorkoutCard from '../components/WorkoutCard';
 import WeightTrackerWidget from '../components/WeightTrackerWidget';
-import { Calendar, TrendingUp, Scale, Timer, Plus, Flag, ChevronLeft, ChevronRight } from 'lucide-react';
+import WeeklyWorkoutWidget from '../components/WeeklyWorkoutWidget';
+import CalendarWidget from '../components/CalendarWidget';
+import YearlyDistanceWidget from '../components/YearlyDistanceWidget';
+import { Calendar, TrendingUp, Scale, Timer, Plus, Flag, ChevronLeft, ChevronRight, Route } from 'lucide-react';
 
 // Tipo del workout come usato nel WeeklySchedule
 interface SimpleWorkout {
@@ -194,6 +197,35 @@ const RaceWidget = () => {
 const Dashboard = () => {
   const [selectedWorkout, setSelectedWorkout] = useState<FullWorkout | null>(null);
 
+  // Array dei widget disponibili
+  const widgets = [
+    {
+      id: 'race',
+      component: RaceWidget,
+      title: 'Gare'
+    },
+    {
+      id: 'weight',
+      component: WeightTrackerWidget,
+      title: 'Peso'
+    },
+    {
+      id: 'weekly-workout',
+      component: WeeklyWorkoutWidget,
+      title: 'Allenamenti Settimanali'
+    },
+    {
+      id: 'calendar',
+      component: CalendarWidget,
+      title: 'Calendario'
+    },
+    {
+      id: 'yearly-distance',
+      component: YearlyDistanceWidget,
+      title: 'Obiettivo Annuale'
+    }
+  ];
+
   const handleWorkoutSelect = (workout: SimpleWorkout) => {
     const fullWorkout: FullWorkout = {
       ...workout,
@@ -234,21 +266,11 @@ const Dashboard = () => {
             <div className="flex gap-6">
               {/* Colonna sinistra con i widget */}
               <div className="flex gap-6">
-                <div className="w-64">
-                  <RaceWidget />
-                </div>
-                <div className="w-64">
-                  <WeightTrackerWidget />
-                </div>
-                <div className="w-64 bg-white rounded-lg shadow p-6 cursor-pointer hover:bg-gray-50 transition-colors">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Plus className="h-6 w-6 text-gray-400" />
-                    <h2 className="text-lg font-semibold text-gray-400">Nuovo Widget</h2>
+                {widgets.map(widget => (
+                  <div key={widget.id} className="w-64">
+                    <widget.component />
                   </div>
-                  <div className="flex items-center justify-center h-[calc(100%-2rem)]">
-                    <Plus className="h-8 w-8 text-gray-300" />
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Weekly Schedule */}
