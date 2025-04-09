@@ -8,7 +8,8 @@ import {
   Calendar,
   User,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Timer
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -18,6 +19,7 @@ const Sidebar = () => {
   const menuItems = [
     { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/calendar', icon: Flag, label: 'Gare' },
+    { path: '/race-countdown', icon: Timer, label: 'Countdown Gare' },
     { path: '/users', icon: Users, label: 'Utenti' },
     { path: '/workout', icon: Dumbbell, label: 'Workout' },
     { path: '/schedule', icon: Calendar, label: 'Allenamenti' },

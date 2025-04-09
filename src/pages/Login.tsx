@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Button } from '../components/Button';
 import { Logo } from '../components/Logo';
-import { Link } from 'react-router-dom';
-import { Calendar, TrendingUp, Scale, Timer } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Calendar, TrendingUp, Scale, Timer, Footprints, Medal, Flag } from 'lucide-react';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -142,6 +143,9 @@ export const Login: React.FC = () => {
             <Link to="/races" className="text-primary-600 hover:text-primary-500 block">
               Calendario Gare
             </Link>
+            <Link to="/my-races" className="text-primary-600 hover:text-primary-500 block">
+              Le Mie Gare
+            </Link>
           </div>
 
           <div className="mt-6">
@@ -175,6 +179,67 @@ export const Login: React.FC = () => {
               >
                 Allenamenti
               </Link>
+            </div>
+          </div>
+
+          <div className="mt-8 space-y-6">
+            <div className="space-y-4">
+              <button
+                onClick={() => navigate('/login/google')}
+                className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              >
+                <img
+                  className="h-5 w-5 mr-2"
+                  src="https://www.svgrepo.com/show/475656/google-color.svg"
+                  alt="Google logo"
+                />
+                <span>Accedi con Google</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/login/github')}
+                className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              >
+                <img
+                  className="h-5 w-5 mr-2"
+                  src="https://www.svgrepo.com/show/512317/github-142.svg"
+                  alt="GitHub logo"
+                />
+                <span>Accedi con GitHub</span>
+              </button>
+            </div>
+
+            {/* Link al widget delle scarpe */}
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => navigate('/shoes')}
+                className="inline-flex items-center text-sm text-green-600 hover:text-green-500"
+              >
+                <Footprints className="h-4 w-4 mr-1" />
+                <span>Gestisci le tue scarpe da corsa</span>
+              </button>
+            </div>
+            
+            {/* Link al database delle gare personali */}
+            <div className="mt-2 text-center">
+              <button
+                onClick={() => navigate('/my-races')}
+                className="inline-flex items-center text-sm text-green-600 hover:text-green-500"
+              >
+                <Medal className="h-4 w-4 mr-1" />
+                <span>Gestisci le tue gare</span>
+              </button>
+            </div>
+
+            {/* Link al widget delle gare */}
+            <div className="mt-2 text-center">
+              <button
+                onClick={() => navigate('/race-widget')}
+                className="inline-flex items-center text-sm text-green-600 hover:text-green-500"
+              >
+                <Flag className="h-4 w-4 mr-1" />
+                <span>Countdown Gare</span>
+              </button>
             </div>
           </div>
         </form>
