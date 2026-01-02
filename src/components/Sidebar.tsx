@@ -18,11 +18,11 @@ const Sidebar = () => {
 
   const menuItems = [
     { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/calendar', icon: Flag, label: 'Gare' },
-    { path: '/race-countdown', icon: Timer, label: 'Countdown Gare' },
-    { path: '/users', icon: Users, label: 'Utenti' },
-    { path: '/workout', icon: Dumbbell, label: 'Workout' },
-    { path: '/schedule', icon: Calendar, label: 'Allenamenti' },
+    { path: '/athletes', icon: Users, label: 'I Miei Atleti' },
+    { path: '/calendar', icon: Calendar, label: 'Calendario' },
+    { path: '/races', icon: Flag, label: 'Gare' },
+    { path: '/race-widget', icon: Timer, label: 'Countdown Gare' },
+    { path: '/widgets', icon: Dumbbell, label: 'Widgets' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
