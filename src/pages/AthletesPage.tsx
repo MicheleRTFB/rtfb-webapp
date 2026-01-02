@@ -25,8 +25,17 @@ const AthletesPage: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await intervalsService.getAthletes();
-      setAthletes(data);
+
+      // Prova prima a ottenere la lista atleti (per account coach)
+      try {
+        const data = await intervalsService.getAthletes();
+        setAthletes(data);
+      } catch (coachErr) {
+        // Se fallisce (account non coach), usa il profilo corrente
+        console.log('Account non coach, carico profilo corrente');
+        const currentAthlete = await intervalsService.getCurrentAthlete();
+        setAthletes([currentAthlete]); // Mostra solo te stesso
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Errore nel caricamento atleti');
       console.error('Error loading athletes:', err);
