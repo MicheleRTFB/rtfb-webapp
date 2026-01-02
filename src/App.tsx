@@ -9,6 +9,7 @@ import RaceWidgetPage from './pages/RaceWidgetPage';
 import WidgetsPage from './pages/WidgetsPage';
 import AthletesPage from './pages/AthletesPage';
 import AthleteStatsPage from './pages/AthleteStatsPage';
+import ApiTestPage from './pages/ApiTestPage';
 import './App.css'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/widgets" element={<WidgetsPage />} />
         <Route path="/athletes" element={<AthletesPage />} />
         <Route path="/athletes/:athleteId/stats" element={<AthleteStatsPage />} />
+        <Route path="/api-test" element={<ApiTestPage />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
