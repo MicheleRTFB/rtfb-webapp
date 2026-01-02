@@ -26,7 +26,7 @@ class IntervalsService {
    */
   async getCurrentAthlete(): Promise<IntervalsAthlete> {
     const headers = this.getHeaders();
-    const response = await fetch(`${this.baseUrl}/athlete`, {
+    const response = await fetch(`${this.baseUrl}/athlete/i`, {
       headers,
       credentials: 'omit'
     });
