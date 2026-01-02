@@ -7,6 +7,8 @@ import RaceDatabasePage from './pages/RaceDatabasePage';
 import RunningShoeWidget from './components/RunningShoeWidget';
 import RaceWidgetPage from './pages/RaceWidgetPage';
 import WidgetsPage from './pages/WidgetsPage';
+import AthletesPage from './pages/AthletesPage';
+import AthleteStatsPage from './pages/AthleteStatsPage';
 import './App.css'
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/shoes" element={<RunningShoeWidget />} />
         <Route path="/race-widget" element={<RaceWidgetPage />} />
         <Route path="/widgets" element={<WidgetsPage />} />
+        <Route path="/athletes" element={<AthletesPage />} />
+        <Route path="/athletes/:athleteId/stats" element={<AthleteStatsPage />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>

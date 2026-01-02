@@ -162,6 +162,12 @@ export const Login: React.FC = () => {
 
             <div className="mt-6 grid gap-3">
               <Link
+                to="/athletes"
+                className="w-full inline-flex justify-center py-2 px-4 border border-blue-500 rounded-md shadow-sm bg-blue-50 text-sm font-medium text-blue-700 hover:bg-blue-100"
+              >
+                👥 I Miei Atleti
+              </Link>
+              <Link
                 to="/dashboard"
                 className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >
